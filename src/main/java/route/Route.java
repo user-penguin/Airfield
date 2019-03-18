@@ -1,4 +1,23 @@
 package route;
 
-public class Route {
+import java.util.ArrayList;
+
+public class Route implements IRoute {
+    private ArrayList<Coordinate> route;
+
+    public Route () {
+        this.route = new ArrayList<Coordinate>();
+    }
+
+    public void addCoordinate (Coordinate coordinate) {
+        this.route.add(coordinate);
+    }
+
+    public ArrayList<Coordinate> getAllCoordinates () {
+        return null;
+    }
+
+    public double calculateDuration () {
+        return 0;
+    }
 }
