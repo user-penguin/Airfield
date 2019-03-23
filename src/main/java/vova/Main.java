@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import route.Route;
+import tool.RouteHandler;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -34,8 +35,10 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1366, 600));
         primaryStage.show();
 
-        Route route = null;
-        Point point = new Point(100, 100, 1, 1, 1, route);
+        RouteHandler routeHandler = new RouteHandler();
+        Route route = routeHandler.readRoute("VovaTestiruj");
+        System.out.println(route.getAllCoordinates());
+        Point point = new Point(1, route, "Точка тест");
         add(point);
 
         animationTimer.start();
@@ -48,5 +51,6 @@ public class Main extends Application {
     private void add(Draw draw) {
         draws.add(draw);
         root.getChildren().add((Node) draw);
+        root.getChildren().add(draw.getLabel());
     }
 }
