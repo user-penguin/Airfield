@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import route.Coordinate;
@@ -14,6 +15,9 @@ public class CreateRouteController {
 
     @FXML
     private Pane dromePain;
+
+    @FXML
+    private TextField inputFileName;
 
     @FXML
     private void initialize () {
@@ -33,12 +37,13 @@ public class CreateRouteController {
     @FXML
     public void recordRun () {
         isRecording = true;
+        this.filename = inputFileName.getText();
 
     }
     @FXML
     public void recordStop () {
         RouteHandler routeHandler = new RouteHandler();
-        routeHandler.writeRoute(this.route, "VovaTestiruj");
+        routeHandler.writeRoute(this.route, this.filename);
         isRecording = false;
     }
 }
