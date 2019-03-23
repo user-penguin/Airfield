@@ -19,8 +19,8 @@ public class Coordinate extends Object{
         return y;
     }
 
-    public boolean inCoordinate(int x, int y) {
-        return abs(x - this.x) < 0.01 && abs(y - this.y) < 0.01;
+    public boolean inCoordinate(double x, double y) {
+        return abs(x - this.x) < 1 && abs(y - this.y) < 1;
     }
 
     @Override
@@ -33,5 +33,10 @@ public class Coordinate extends Object{
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + " " + y + ")";
     }
 }
