@@ -1,6 +1,6 @@
 package route;
 
-public class Coordinate {
+public class Coordinate extends Object{
     private int x;
     private int y;
 
@@ -15,5 +15,17 @@ public class Coordinate {
 
     public int getY() {
         return y;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        Coordinate coordinate = (Coordinate) object;
+        if (this.x != coordinate.getX()) {
+            return false;
+        }
+        if (this.y != coordinate.getY()) {
+            return false;
+        }
+        return true;
     }
 }

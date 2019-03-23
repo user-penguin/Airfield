@@ -5,15 +5,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import route.Route;
 
-import javax.swing.text.html.ImageView;
-
 public class Controller {
     private Route route;
     private boolean isRecording;
 
     @FXML
     private Pane dromePain;
-
 
     @FXML
     private void initialize () {

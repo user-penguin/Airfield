@@ -14,7 +14,7 @@ public class Route implements IRoute {
     }
 
     public ArrayList<Coordinate> getAllCoordinates () {
-        return null;
+        return route;
     }
 
     public double calculateDuration () {
