@@ -19,6 +19,12 @@ public class Controller {
     private void initialize () {
         route = new Route();
         isRecording = false;
+        dromePain.addEventHandler(MouseEvent.MOUSE_CLICKED, e-> {
+            if (isRecording) {
+                System.out.println(e.getX());
+                System.out.println(e.getY());
+            }
+        });
     }
 
     @FXML
@@ -29,15 +35,5 @@ public class Controller {
     @FXML
     public void recordStop () {
         isRecording = false;
-    }
-
-    @FXML
-    public void getCoordinate () {
-        dromePain.addEventHandler(MouseEvent.MOUSE_CLICKED, e-> {
-            if (isRecording) {
-                System.out.println(e.getX());
-                System.out.println(e.getY());
-            }
-        });
     }
 }
