@@ -37,6 +37,7 @@ public class CreateRouteController {
     @FXML
     public void recordRun () {
         isRecording = true;
+        route = new Route();
         this.filename = inputFileName.getText();
 
     }
