@@ -1,5 +1,7 @@
 package route;
 
+import static java.lang.StrictMath.abs;
+
 public class Coordinate extends Object{
     private int x;
     private int y;
@@ -15,6 +17,10 @@ public class Coordinate extends Object{
 
     public int getY() {
         return y;
+    }
+
+    public boolean inCoordinate(int x, int y) {
+        return abs(x - this.x) < 0.01 && abs(y - this.y) < 0.01;
     }
 
     @Override
