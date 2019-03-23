@@ -3,11 +3,14 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import route.Coordinate;
 import route.Route;
+import tool.RouteHandler;
 
-public class Controller {
+public class CreateRouteController {
     private Route route;
     private boolean isRecording;
+    private String filename;
 
     @FXML
     private Pane dromePain;
@@ -18,8 +21,11 @@ public class Controller {
         isRecording = false;
         dromePain.addEventHandler(MouseEvent.MOUSE_CLICKED, e-> {
             if (isRecording) {
+                int xCoordinate = (int) e.getX();
                 System.out.println(e.getX());
+                int yCoordinate = (int) e.getY();
                 System.out.println(e.getY());
+                route.addCoordinate(new Coordinate(xCoordinate, yCoordinate));
             }
         });
     }
@@ -27,10 +33,12 @@ public class Controller {
     @FXML
     public void recordRun () {
         isRecording = true;
-    }
 
+    }
     @FXML
     public void recordStop () {
+        RouteHandler routeHandler = new RouteHandler();
+        routeHandler.writeRoute(this.route, "VovaTestiruj");
         isRecording = false;
     }
 }
