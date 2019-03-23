@@ -20,7 +20,7 @@ public class Coordinate extends Object{
     }
 
     public boolean inCoordinate(double x, double y) {
-        return abs(x - this.x) < 1 && abs(y - this.y) < 1;
+        return abs(x - this.x) < 5 && abs(y - this.y) < 5;
     }
 
     @Override

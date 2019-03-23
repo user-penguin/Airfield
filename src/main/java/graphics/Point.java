@@ -22,9 +22,9 @@ public class Point extends Circle implements Draw {
     private double dx;
     private double dy;
 
-    private int speed;
+    private double speed;
 
-    public Point(int speed, Route route, String text) {
+    public Point(double speed, Route route, String text) {
         super(5);
         this.text = text;
         this.x = route.getAllCoordinates().get(0).getX();

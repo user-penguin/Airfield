@@ -36,10 +36,26 @@ public class Main extends Application {
         primaryStage.show();
 
         RouteHandler routeHandler = new RouteHandler();
+
         Route route = routeHandler.readRoute("VovaTestiruj");
-        System.out.println(route.getAllCoordinates());
-        Point point = new Point(1, route, "Точка тест");
+        Point point = new Point(1, route, "Самолет");
         add(point);
+        System.out.println(route.getAllCoordinates());
+
+        Route car1Poute = routeHandler.readRoute("car1");
+        Point car1 = new Point(0.5, car1Poute, "Умрет первой");
+        add(car1);
+        System.out.println(car1Poute.getAllCoordinates());
+
+        Route car2Poute = routeHandler.readRoute("car2");
+        Point car2 = new Point(0.2, car2Poute, "Боевая классика");
+        add(car2);
+        System.out.println(car2Poute.getAllCoordinates());
+
+        Route car3Poute = routeHandler.readRoute("car3");
+        Point car3 = new Point(0.95, car3Poute, "Бульдозер");
+        add(car3);
+        System.out.println(car3Poute.getAllCoordinates());
 
         animationTimer.start();
     }
