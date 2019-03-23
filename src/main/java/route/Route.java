@@ -6,7 +6,7 @@ public class Route implements IRoute {
     private ArrayList<Coordinate> route;
 
     public Route () {
-        this.route = new ArrayList<Coordinate>();
+        this.route = new ArrayList<>();
     }
 
     public void addCoordinate (Coordinate coordinate) {
