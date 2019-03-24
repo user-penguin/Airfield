@@ -8,5 +8,5 @@ public interface Draw {
 
     Label getLabel();
 
-    Node getCircle();
+    Node getTriangle();
 }
