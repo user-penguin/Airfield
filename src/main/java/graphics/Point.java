@@ -8,7 +8,9 @@ import vova.Draw;
 import static java.lang.Math.incrementExact;
 import static java.lang.Math.sqrt;
 
-public class Point extends Circle implements Draw {
+public class Point implements Draw {
+
+    private Circle circle;
 
     private Label label = new Label();
     private String text;
@@ -24,9 +26,9 @@ public class Point extends Circle implements Draw {
 
     private double speed;
 
-    public Point(double speed, Route route, String text) {
-        super(5);
-        this.text = text;
+    public Point(double speed, Route route, String text, TypeAuto typeAuto, String number) {
+        circle = new Circle(5);
+        this.text = text + "\n" + typeAuto + "\n" + number;
         this.x = route.getAllCoordinates().get(0).getX();
         this.y = route.getAllCoordinates().get(0).getY();
         this.route = route;
@@ -47,8 +49,8 @@ public class Point extends Circle implements Draw {
 
         x += speed * dx;
         y += speed * dy;
-        setCenterX(x);
-        setCenterY(y);
+        circle.setCenterX(x);
+        circle.setCenterY(y);
     }
 
     private double newDx() {
@@ -73,5 +75,9 @@ public class Point extends Circle implements Draw {
     @Override
     public Label getLabel() {
         return label;
+    }
+
+    public Circle getCircle() {
+        return circle;
     }
 }
