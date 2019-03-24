@@ -38,19 +38,16 @@ public class Main extends Application {
         RouteHandler routeHandler = new RouteHandler();
 
         Route car1Poute = routeHandler.readRoute("car1");
-        Point car1 = new Point(0.5, car1Poute, TypeAuto.ADS, "А137МР");
+        Point car1 = new Point(0.5, car1Poute, TypeAuto.ADS, "А137МР", root);
         add(car1);
-        System.out.println(car1Poute.getAllCoordinates());
 
         Route car2Poute = routeHandler.readRoute("car2");
-        Point car2 = new Point(0.2, car2Poute,  TypeAuto.MLAD, "К710ОМ");
+        Point car2 = new Point(0.2, car2Poute,  TypeAuto.MLAD, "К710ОМ", root);
         add(car2);
-        System.out.println(car2Poute.getAllCoordinates());
 
         Route car3Poute = routeHandler.readRoute("car3");
-        Point car3 = new Point(0.95, car3Poute, TypeAuto.MLAD, "У613ТР");
+        Point car3 = new Point(0.95, car3Poute, TypeAuto.MLAD, "У613ТР", root);
         add(car3);
-        System.out.println(car3Poute.getAllCoordinates());
 
         animationTimer.start();
     }
@@ -61,7 +58,6 @@ public class Main extends Application {
 
     private void add(Draw draw) {
         draws.add(draw);
-        root.getChildren().add(draw.getTriangle());
         root.getChildren().add(draw.getLabel());
     }
 }

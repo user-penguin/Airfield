@@ -7,6 +7,4 @@ public interface Draw {
     void draw(long time);
 
     Label getLabel();
-
-    Node getTriangle();
 }
