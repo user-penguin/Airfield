@@ -85,7 +85,7 @@ public class Point implements Draw {
             circles.remove(0);
 
             double a = sqrt((y/592*8*111)*(y/592*8*111) + (x/1366*60*22)*(x/1366*60*22));
-            label.setText(text + "\n32°" + (int)(y/592*8) + "'с.ш. 55°" + (int)(x/1366*60) + "в.д.\n" +
+            label.setText(text + "\n32°" + (int)(y/592*8) + "'с.ш. 55°" + (int)(x/1366*60) + "'в.д.\n" +
                     (a - a%0.01) + "км/ч");
             label.setTranslateX(x + 10);
             label.setTranslateY(y + 10);

@@ -1,6 +1,7 @@
 package vova;
 
 import graphics.Point;
+import graphics.Tower;
 import graphics.TypeAuto;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -60,6 +61,9 @@ public class Main extends Application {
         Route car3Poute = routeHandler.readRoute("car3");
         Point car3 = new Point(0.95, car3Poute, TypeAuto.MLAD, "У613ТР", root);
         add(car3);
+
+        add(Tower.getInstance());
+        root.getChildren().add(Tower.getInstance().getTriangle());
 
         animationTimer.start();
     }
