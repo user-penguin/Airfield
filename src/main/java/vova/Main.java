@@ -4,8 +4,11 @@ import graphics.Point;
 import graphics.TypeAuto;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import route.Route;
@@ -19,11 +22,15 @@ public class Main extends Application {
     private AnchorPane root;
     private List<Draw> draws = new LinkedList<>();
 
+    private boolean work = false;
+
     private AnimationTimer animationTimer = new AnimationTimer() {
         @Override
         public void handle(long now) {
             for (Draw draw: draws) {
-                draw.draw(now);
+                if (work) {
+                    draw.draw(now);
+                }
             }
         }
     };
@@ -33,6 +40,11 @@ public class Main extends Application {
         root = FXMLLoader.load(getClass().getResource("/FXML/vova.fxml"));
         primaryStage.setTitle("Аirfield");
         primaryStage.setScene(new Scene(root, 1366, 590));
+        Button startPause = new Button("Старт/Пауза");
+        startPause.setTranslateX(1250);
+        startPause.setTranslateY(550);
+        startPause.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> work = !work);
+        root.getChildren().add(startPause);
         primaryStage.show();
 
         RouteHandler routeHandler = new RouteHandler();

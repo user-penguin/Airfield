@@ -58,6 +58,8 @@ public class Point implements Draw {
         triangle = new Triangle(x, y);
         root.getChildren().add(triangle);
         now = new Date();
+
+        label.setTextFill(javafx.scene.paint.Color.color(190.0/255,171.0/255,1));
     }
 
     @Override
@@ -82,7 +84,9 @@ public class Point implements Draw {
             root.getChildren().remove(circles.get(0));
             circles.remove(0);
 
-            label.setText(text + "\nX: " + (int)x + "\nY: " + (int)y);
+            double a = sqrt((y/592*8*111)*(y/592*8*111) + (x/1366*60*22)*(x/1366*60*22));
+            label.setText(text + "\n32°" + (int)(y/592*8) + "'с.ш. 55°" + (int)(x/1366*60) + "в.д.\n" +
+                    (a - a%0.01) + "км/ч");
             label.setTranslateX(x + 10);
             label.setTranslateY(y + 10);
 
