@@ -1,12 +1,12 @@
 package tool;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import route.Route;
 import vova.Point;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RouteHandlerTest {
     @Test
