@@ -11,4 +11,11 @@ class PointTest {
         assertEquals(0.0, point.getRealX());
         assertEquals(0.0, point.getRealY());
     }
+
+    @Test
+    void CreatePxPointTest() {
+        Point point = new Point(0, 0);
+        assertEquals(0.0, point.getPxX());
+        assertEquals(0.0, point.getPxY());
+    }
 }
