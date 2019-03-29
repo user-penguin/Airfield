@@ -1,7 +1,10 @@
 package model;
 
+import static java.lang.Math.abs;
+
 public class Point {
 
+    private double REAL_DELTA = 5.0;
     private int PX_WIDTH = 1366; // в пикселях
     private int PX_HEIGHT = 592; // в пикселях
     private double REAL_WIDTH = 10_000.0; // в метрах
@@ -34,5 +37,14 @@ public class Point {
 
     public int getPxY() {
         return (int) (y / REAL_HEIGHT * PX_HEIGHT);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Point point = (Point) obj;
+        boolean eq = true;
+        eq = eq && abs(point.x - x) < REAL_DELTA;
+        eq = eq && abs(point.y - y) < REAL_DELTA;
+        return eq;
     }
 }

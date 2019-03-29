@@ -54,4 +54,18 @@ class PointTest {
         Point point = new Point(0, 592);
         assertEquals(5_000.0, point.getRealY(), REAL_DELTA);
     }
+
+    @Test
+    void EqualsPointTest() {
+        double[] points = new double[] {
+            1, 1, 1, 1,
+            1, 1, 2, 1,
+            1, 1, 3, 1,
+            1, 1, 1, 2,
+            1, 1, 1, 3,
+        };
+        for (int i = 0; i < points.length / 4; i += 4) {
+            assertEquals(new Point(points[i], points[i+1]), new Point(points[i+2], points[i+3]));
+        }
+    }
 }
