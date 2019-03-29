@@ -20,8 +20,14 @@ class PointTest {
     }
 
     @Test
-    void GetRealPointTest() {
+    void GetRealXPointTest() {
         Point point = new Point(10.0, 0.0);
         assertEquals(10.0, point.getRealX());
+    }
+
+    @Test
+    void GetRealYPointTest() {
+        Point point = new Point(0.0, 10.0);
+        assertEquals(10.0, point.getRealY());
     }
 }
