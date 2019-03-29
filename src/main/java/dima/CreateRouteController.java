@@ -1,12 +1,12 @@
-package controller;
+package dima;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import route.Coordinate;
 import route.Route;
 import tool.RouteHandler;
+import vova.Point;
 
 public class CreateRouteController {
     private Route route;
@@ -29,7 +29,7 @@ public class CreateRouteController {
                 System.out.println(e.getX());
                 int yCoordinate = (int) e.getY();
                 System.out.println(e.getY());
-                route.addCoordinate(new Coordinate(xCoordinate, yCoordinate));
+                route.addCoordinate(new Point(xCoordinate, yCoordinate));
             }
         });
     }

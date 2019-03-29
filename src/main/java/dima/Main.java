@@ -1,4 +1,4 @@
-package controller;
+package dima;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,7 +1,7 @@
 package tool;
 
-import route.Coordinate;
 import route.Route;
+import vova.Point;
 
 import java.io.*;
 
@@ -13,8 +13,8 @@ public class RouteHandler {
             FileOutputStream fileOutputStream = new FileOutputStream
                     (getClass().getResource(filePath).getPath() + "/" + filename + ".txt");
             Writer writer = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
-            for (Coordinate coordinate: route.getAllCoordinates()) {
-                writer.write(coordinate.getX() + " " + coordinate.getY() + "\n");
+            for (Point point: route.getAllCoordinates()) {
+                writer.write(point.getXReal() + " " + point.getYReal() + "\n");
             }
             writer.close();
         } catch (IOException e) {
@@ -34,8 +34,8 @@ public class RouteHandler {
                 String[] xyFromFile = read.split(" ");
                 int xCoordinate = Integer.parseInt(xyFromFile[0]);
                 int yCoordinate = Integer.parseInt(xyFromFile[1]);
-                Coordinate coordinate = new Coordinate(xCoordinate, yCoordinate);
-                route.addCoordinate(coordinate);
+                Point point = new Point(xCoordinate, yCoordinate);
+                route.addCoordinate(point);
             }
         } catch (IOException e) {
             e.printStackTrace();

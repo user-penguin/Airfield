@@ -1,23 +1,19 @@
 package route;
 
+import vova.Point;
+
 import java.util.ArrayList;
 
-public class Route implements IRoute {
-    private ArrayList<Coordinate> route;
+public class Route {
 
-    public Route () {
-        this.route = new ArrayList<>();
-    }
+    private ArrayList<Point> route = new ArrayList<>();
 
-    public void addCoordinate (Coordinate coordinate) {
+    public void addCoordinate (Point coordinate) {
         this.route.add(coordinate);
     }
 
-    public ArrayList<Coordinate> getAllCoordinates () {
+    public ArrayList<Point> getAllCoordinates () {
         return route;
     }
 
-    public double calculateDuration () {
-        return 0;
-    }
 }
