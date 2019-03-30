@@ -37,7 +37,7 @@ public class CreateRouteController {
                 System.out.println(e.getX());
                 int yCoordinate = (int) e.getY();
                 System.out.println(e.getY());
-                route.addCoordinate(new Point(xCoordinate, yCoordinate, Double.parseDouble(height.getText())));
+                route.addCoordinate(new Point(xCoordinate, yCoordinate, Double.parseDouble(height.getText()), 0));
             }
         });
 
