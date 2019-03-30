@@ -1,6 +1,6 @@
 package route;
 
-import vova.Point;
+import model.Point;
 
 import java.util.ArrayList;
 

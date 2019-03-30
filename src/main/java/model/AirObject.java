@@ -1,10 +1,10 @@
-package vova;
+package model;
 
 import figure.Figure;
 import javafx.scene.control.Label;
 
-public interface Draw {
-    void draw(long time);
+public interface AirObject {
     Label getLabel();
     Figure getFigure();
+    void draw(long time);
 }

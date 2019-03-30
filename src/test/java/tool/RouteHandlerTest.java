@@ -1,8 +1,8 @@
 package tool;
 
+import model.Point;
 import org.junit.jupiter.api.Test;
 import route.Route;
-import vova.Point;
 
 import java.util.ArrayList;
 
@@ -11,8 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RouteHandlerTest {
     @Test
     public void readingWayTest () {
-        RouteHandler routeHandler = new RouteHandler();
-        Route route = routeHandler.readRoute("test_way");
+        Route route = RouteHandler.readRoute("test_way");
         Point[] actualCoordinates = new Point[2];
         actualCoordinates[0] = new Point(1,2);
         actualCoordinates[1] = new Point(3, 4);

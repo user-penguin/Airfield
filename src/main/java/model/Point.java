@@ -29,6 +29,14 @@ public class Point {
         return y;
     }
 
+    public double getRealXNorm() {
+        return Math.round(x*100)/100;
+    }
+
+    public double getRealYNorm() {
+        return Math.round(y*100)/100;
+    }
+
     public int getPxX() {
         return (int) (x / REAL_WIDTH * PX_WIDTH);
     }
@@ -73,11 +81,21 @@ public class Point {
         }
     }
 
-    double azimuth(Point point) {
+    /**
+     * Считает азимут от данной точки в градусах
+     * @param point базовая точка
+     * @return азимут от 0 до 360 градусов
+     */
+    public double azimuth(Point point) {
         double ret = 360 - corner(point) + 90;
         if (ret >= 360) {
             ret -= 360;
         }
         return ret;
+    }
+
+    public void move(double dx, double dy) {
+        x += dx;
+        y += dy;
     }
 }

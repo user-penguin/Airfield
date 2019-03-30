@@ -1,7 +1,7 @@
 package tool;
 
+import model.Point;
 import route.Route;
-import vova.Point;
 
 import java.io.*;
 
@@ -14,7 +14,7 @@ public class RouteHandler {
                     (getClass().getResource(filePath).getPath() + "/" + filename + ".txt");
             Writer writer = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
             for (Point point: route.getAllCoordinates()) {
-                writer.write(point.getXReal() + " " + point.getYReal() + "\n");
+                writer.write(point.getRealX() + " " + point.getRealY() + "\n");
             }
             writer.close();
         } catch (IOException e) {
@@ -22,12 +22,12 @@ public class RouteHandler {
         }
     }
 
-    public Route readRoute (String filename) {
+    public static Route readRoute (String filename) {
         // маршруты лежат в папке way
         String pathToSource = "/way/" + filename + ".txt";
         Route route = new Route();
         try {
-            FileInputStream fstream = new FileInputStream(getClass().getResource(pathToSource).getPath());
+            FileInputStream fstream = new FileInputStream(RouteHandler.class.getResource(pathToSource).getPath());
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             String read;
             while((read = br.readLine()) != null) {

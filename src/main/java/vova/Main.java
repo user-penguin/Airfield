@@ -3,12 +3,16 @@ package vova;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import objects.Tower;
+import model.AirObject;
+import model.Factory;
+import route.Route;
+import tool.RouteHandler;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,14 +20,14 @@ import java.util.List;
 public class Main extends Application {
 
     private AnchorPane root;
-    private List<Draw> draws = new LinkedList<>();
+    private List<AirObject> airObjects = new LinkedList<>();
 
     private boolean work = true;
 
     private AnimationTimer animationTimer = new AnimationTimer() {
         @Override
         public void handle(long now) {
-            for (Draw draw: draws) {
+            for (AirObject draw: airObjects) {
                 if (work) {
                     draw.draw(now);
                 }
@@ -42,21 +46,24 @@ public class Main extends Application {
         startPause.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> work = !work);
         root.getChildren().add(startPause);
         primaryStage.show();
-
-
-
-        add(Tower.getInstance());
-
         animationTimer.start();
+
+        add(Factory.createTower());
+        Route route1 = RouteHandler.readRoute("car1");
+        Route route2 = RouteHandler.readRoute("car2");
+        Route route3 = RouteHandler.readRoute("car3");
+        add(Factory.createCar(route1, 15));
+        add(Factory.createCar(route2, 20));
+        add(Factory.createCar(route3, 30));
     }
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    private void add(Draw draw) {
-        draws.add(draw);
-        root.getChildren().add(draw.getLabel());
-        root.getChildren().add(draw.getFigure());
+    private void add(AirObject airObject) {
+        airObjects.add(airObject);
+        root.getChildren().add(airObject.getLabel());
+        root.getChildren().add((Node) airObject.getFigure());
     }
 }

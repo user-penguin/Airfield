@@ -1,6 +1,9 @@
 package figure;
 
-import javafx.scene.shape.Polygon;
+import javafx.scene.paint.Color;
 
-public class Figure extends Polygon {
+public interface Figure {
+    void setPosition(int pxX, int pxY);
+
+    void setFillColor(Color color);
 }

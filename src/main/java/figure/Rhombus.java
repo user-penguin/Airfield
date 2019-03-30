@@ -1,4 +1,6 @@
 package figure;
 
-public class Rhombus extends Figure {
+import javafx.scene.shape.Polygon;
+
+public class Rhombus extends Polygon {
 }
