@@ -18,12 +18,6 @@ public class Point {
         this.y = y;
     }
 
-    public Point(int x, int y, double z) {
-        this.x = (double) x / PX_WIDTH * REAL_WIDTH;
-        this.y = REAL_HEIGHT - (double) y / PX_HEIGHT * REAL_HEIGHT;
-        this.z = z;
-    }
-
     public Point(int x, int y, double z, double speed) {
         this.x = (double) x / PX_WIDTH * REAL_WIDTH;
         this.y = REAL_HEIGHT - (double) y / PX_HEIGHT * REAL_HEIGHT;
