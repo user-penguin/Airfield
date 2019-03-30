@@ -2,7 +2,7 @@ package model;
 
 public class Point {
 
-    private double REAL_DELTA = 5.0;
+    private double REAL_DELTA = 50.0;
     private int PX_WIDTH = 1366; // в пикселях
     private int PX_HEIGHT = 592; // в пикселях
     private double REAL_WIDTH = 10_000.0; // в метрах
@@ -25,8 +25,16 @@ public class Point {
         return x;
     }
 
+    public String getRealXGrad() {
+        return "56°" + Math.round(x * 60 / 71 / 1000) + "'в.д.";
+    }
+
     public double getRealY() {
         return y;
+    }
+
+    public String getRealYGrad() {
+        return "32°" + Math.round(y * 60 / 111 / 1000) + "'с.ш.";
     }
 
     public double getRealXNorm() {
@@ -97,5 +105,13 @@ public class Point {
     public void move(double dx, double dy) {
         x += dx;
         y += dy;
+    }
+
+    public double azimuthNorm(Point point) {
+        return (int)Math.round(azimuth(point));
+    }
+
+    public double lengthNorm(Point point) {
+        return (int)Math.round(length(point));
     }
 }

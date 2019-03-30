@@ -51,10 +51,8 @@ public class Main extends Application {
         add(Factory.createTower());
         Route route1 = RouteHandler.readRoute("AngleTest");
         Route route2 = RouteHandler.readRoute("AzimutTest");
-//        Route route3 = RouteHandler.readRoute("car3");
-        add(Factory.createCar(route1, 15));
-        add(Factory.createCar(route2, 20));
-//        add(Factory.createCar(route3, 30));
+        add(Factory.createCar(route1, 5));
+        add(Factory.createCar(route2, 5));
     }
 
     public static void main(String[] args) {
