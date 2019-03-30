@@ -56,9 +56,10 @@ public class Main extends Application {
         add(Factory.createCar(route2, 0.5));
         add(Factory.createCar(route3, 0.5));
 
-        Route routePlane = RouteHandler.readRoute("plane1");
-        add(Factory.createPlane(routePlane, 10));
-
+        Route routePlane = RouteHandler.readRouteWithSpeed("plane1");
+        add(Factory.createPlane(routePlane));
+        Route routePlane2 = RouteHandler.readRouteWithSpeed("plane2");
+        add(Factory.createPlane(routePlane2));
     }
 
     public static void main(String[] args) {

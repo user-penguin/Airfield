@@ -18,13 +18,13 @@ public class Plane extends BaseAirObject {
     private int k = 0;
     private Color color;
 
-    public Plane(Route route, double speed) {
+    public Plane(Route route) {
         super(new Rhombus(), new Point(route.getAllCoordinates().get(0).getPxX(), route.getAllCoordinates().get(0).getPxY(), route.getAllCoordinates().get(0).getRealZ(), route.getAllCoordinates().get(0).getSpeed()));
         color = Color.color(50.0/255,200.0/255,50.0/255);
         figure.setFillColor(color);
         label.setTextFill(color);
 
-        this.speed = speed;
+        this.speed = route.getAllCoordinates().get(0).getSpeed();
         for (int i = 0; i < 15; i++) {
             circles.add(new Circle());
         }

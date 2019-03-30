@@ -11,7 +11,7 @@ public class Factory {
         return new Car(route, speed);
     }
 
-    public static AirObject createPlane(Route route, double speed) {
-        return new Plane(route, speed);
+    public static AirObject createPlane(Route route) {
+        return new Plane(route);
     }
 }
