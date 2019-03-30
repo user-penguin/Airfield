@@ -19,7 +19,7 @@ public class Plane extends BaseAirObject {
     private Color color;
 
     public Plane(Route route, double speed) {
-        super(new Rhombus(), new Point(route.getAllCoordinates().get(0).getPxX(), route.getAllCoordinates().get(0).getPxY(), route.getAllCoordinates().get(0).getRealZ()));
+        super(new Rhombus(), new Point(route.getAllCoordinates().get(0).getPxX(), route.getAllCoordinates().get(0).getPxY(), route.getAllCoordinates().get(0).getRealZ(), route.getAllCoordinates().get(0).getSpeed()));
         color = Color.color(50.0/255,200.0/255,50.0/255);
         figure.setFillColor(color);
         label.setTextFill(color);
@@ -47,6 +47,7 @@ public class Plane extends BaseAirObject {
             double z2 = (pointNext.getRealZ() - pointK.getRealZ()) * (pointNext.getRealZ() - pointK.getRealZ());
             double length = Math.sqrt(x2 + y2 + z2);
 
+            speed = pointNext.getSpeed();
             dx = (pointNext.getRealX() - pointK.getRealX()) / length * speed;
             dy = (pointNext.getRealY() - pointK.getRealY()) / length * speed;
             dz = (pointNext.getRealZ() - pointK.getRealZ()) / length * speed;

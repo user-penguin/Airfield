@@ -30,6 +30,10 @@ public class Point {
         this.y = REAL_HEIGHT - (double) y / PX_HEIGHT * REAL_HEIGHT;
     }
 
+    public double getSpeed() {
+        return speed;
+    }
+
     public double getRealZ() {
         return z;
     }
