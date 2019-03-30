@@ -32,8 +32,16 @@ public class Car extends BaseAirObject {
 
     private void newVector() {
         int next = (k == (route.getAllCoordinates().size() - 1))? 0 : k+1;
-        dx = (route.getAllCoordinates().get(next).getRealX() - route.getAllCoordinates().get(k).getRealY()) / getLength();
-        dy = (route.getAllCoordinates().get(next).getRealY() - route.getAllCoordinates().get(k).getRealY()) / getLength();
+
+        Point pointNext = route.getAllCoordinates().get(next);
+        Point pointK = route.getAllCoordinates().get(k);
+
+        double x2 = (pointNext.getRealX() - pointK.getRealX()) * (pointNext.getRealX() - pointK.getRealX());
+        double y2 = (pointNext.getRealY() - pointK.getRealY()) * (pointNext.getRealY() - pointK.getRealY());
+        double length = Math.sqrt(x2 + y2);
+
+        dx = (pointNext.getRealX() - pointK.getRealY()) / length / 1000 * speed;
+        dy = (pointNext.getRealY() - pointK.getRealY()) / length / 1000 * speed;
     }
 
     @Override
@@ -44,15 +52,5 @@ public class Car extends BaseAirObject {
 
         point.move(dx, dy);
         figure.setPosition(point.getPxX(), point.getPxY());
-    }
-
-
-    private double getLength() {
-        int next = (k == (route.getAllCoordinates().size() - 1))? 0 : k+1;
-        double xx = route.getAllCoordinates().get(next).getRealX() - route.getAllCoordinates().get(k).getRealX();
-        xx *= xx;
-        double yy = route.getAllCoordinates().get(next).getRealY() - route.getAllCoordinates().get(k).getRealY();
-        yy *= yy;
-        return Math.sqrt(xx + yy);
     }
 }
