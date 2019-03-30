@@ -32,15 +32,9 @@ public class RouteHandler {
             String read;
             while((read = br.readLine()) != null) {
                 String[] xyFromFile = read.split(" ");
-                Point point;
                 int xCoordinate = Integer.parseInt(xyFromFile[0]);
                 int yCoordinate = Integer.parseInt(xyFromFile[1]);
-                if (xyFromFile.length == 3) {
-                    double zCoordinate = Double.parseDouble(xyFromFile[2]);
-                    point = new Point(xCoordinate, yCoordinate, zCoordinate);
-                } else {
-                    point = new Point(xCoordinate, yCoordinate);
-                }
+                Point point = new Point(xCoordinate, yCoordinate);
                 route.addCoordinate(point);
             }
         } catch (IOException e) {
