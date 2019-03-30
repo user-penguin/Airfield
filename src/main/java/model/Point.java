@@ -11,21 +11,27 @@ public class Point {
     private double x;
     private double y;
     private double z;
+    private double speed;
 
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public Point(int x, int y, double z) {
+    public Point(int x, int y, double z, double speed) {
         this.x = (double) x / PX_WIDTH * REAL_WIDTH;
         this.y = REAL_HEIGHT - (double) y / PX_HEIGHT * REAL_HEIGHT;
         this.z = z;
+        this.speed = speed;
     }
 
     public Point(int x, int y) {
         this.x = (double) x / PX_WIDTH * REAL_WIDTH;
         this.y = REAL_HEIGHT - (double) y / PX_HEIGHT * REAL_HEIGHT;
+    }
+
+    public double getSpeed() {
+        return speed;
     }
 
     public double getRealZ() {
@@ -118,11 +124,21 @@ public class Point {
         y += dy;
     }
 
+    public void move(double dx, double dy, double dz) {
+        x += dx;
+        y += dy;
+        z += dz;
+    }
+
     public double azimuthNorm(Point point) {
         return (int)Math.round(azimuth(point));
     }
 
     public double lengthNorm(Point point) {
         return (int)Math.round(length(point));
+    }
+
+    public double getRealZNorm() {
+        return Math.round(getRealZ()*100)/100;
     }
 }

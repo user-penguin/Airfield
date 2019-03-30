@@ -13,6 +13,7 @@ public class Triangle extends Polygon implements Figure {
         );
     }
 
+    @Override
     public void setPosition(int pxX, int pxY) {
         getPoints().setAll(
                 +0 + (double)pxX, -5 + (double)pxY,
