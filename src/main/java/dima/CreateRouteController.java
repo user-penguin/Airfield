@@ -4,9 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import model.Point;
 import route.Route;
 import tool.RouteHandler;
+
+import java.net.URL;
 
 public class CreateRouteController {
     private Route route;
@@ -15,6 +19,9 @@ public class CreateRouteController {
 
     @FXML
     private Pane dromePain;
+
+    @FXML
+    private MediaPlayer mediaPlayer;
 
     @FXML
     private TextField inputFileName;
@@ -32,6 +39,9 @@ public class CreateRouteController {
                 route.addCoordinate(new Point(xCoordinate, yCoordinate));
             }
         });
+        URL helicopterPath = getClass().getResource("/sound/helicopter.mp3");
+        Media helicopter = new Media(helicopterPath.toString());
+        mediaPlayer = new MediaPlayer(helicopter);
     }
 
     @FXML
@@ -46,5 +56,20 @@ public class CreateRouteController {
         RouteHandler routeHandler = new RouteHandler();
         routeHandler.writeRoute(this.route, this.filename);
         isRecording = false;
+    }
+
+    @FXML
+    public void startHelicopter() {
+        mediaPlayer.play();
+    }
+
+    @FXML
+    public void pauseHelicopter() {
+        mediaPlayer.pause();
+    }
+
+    @FXML
+    public void stopHelicopter() {
+        mediaPlayer.stop();
     }
 }
