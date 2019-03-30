@@ -125,4 +125,8 @@ public class Point {
     public double lengthNorm(Point point) {
         return (int)Math.round(length(point));
     }
+
+    public double getRealZNorm() {
+        return Math.round(getRealZ()*100)/100;
+    }
 }

@@ -8,6 +8,7 @@ public class Circle extends javafx.scene.shape.Circle implements Figure {
         super(3);
     }
 
+    @Override
     public void setPosition(int pxX, int pxY) {
         setCenterX(pxX);
         setCenterY(pxY);

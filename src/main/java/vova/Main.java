@@ -55,6 +55,10 @@ public class Main extends Application {
         add(Factory.createCar(route1, 0.5));
         add(Factory.createCar(route2, 0.5));
         add(Factory.createCar(route3, 0.5));
+
+        Route routePlane = RouteHandler.readRoute("AngleTest");
+        add(Factory.createPlane(routePlane, 10));
+
     }
 
     public static void main(String[] args) {
