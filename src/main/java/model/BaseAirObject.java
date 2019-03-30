@@ -17,6 +17,7 @@ public abstract class BaseAirObject implements AirObject {
     protected double dz;
     protected double speed;
     protected Date lastTime;
+    protected Date lastTime1;
 
     public BaseAirObject(Figure figure, Point point) {
         this.figure = figure;

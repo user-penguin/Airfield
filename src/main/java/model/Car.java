@@ -30,6 +30,7 @@ public class Car extends BaseAirObject {
 
         this.route = route;
         lastTime = new Date();
+        lastTime1 = new Date();
 
         newVector();
     }
@@ -50,38 +51,40 @@ public class Car extends BaseAirObject {
 
     @Override
     public void draw(long time, AnchorPane root) {
-        if (route.getAllCoordinates().get(k).equals(new Point(point.getRealX(), point.getRealY()))) {
-            newVector();
-            k = (k == (route.getAllCoordinates().size() - 1))? 0 : k+1;
-        }
-
-        figure.setPosition(point.getPxX(), point.getPxY());
-        label.setTranslateX(point.getPxX() - 12);
-        label.setTranslateY(point.getPxY() + 7);
-
-        point.move(dx, dy);
-        figure.setPosition(point.getPxX(), point.getPxY());
-
-        label.setText(point.getRealYGrad() + " " + point.getRealXGrad() + "\n" +
-                "Azimuth: " + Tower.getInstance().point.azimuthNorm(this.point) + "°\n" +
-                "Length: " + Tower.getInstance().point.lengthNorm(this.point) + "м");
-
-        Date date = new Date();
-        if (date.getTime() - lastTime.getTime() > 500) {
-            Circle circle = new Circle();
-            circle.setFill(color);
-            circle.setCenterX(point.getPxX());
-            circle.setCenterY(point.getPxY());
-            circles.add(circle);
-            root.getChildren().add(circle);
-            root.getChildren().remove(circles.get(0));
-            circles.remove(0);
-
-            for (int i = 0; i < circles.size(); i++) {
-                circles.get(i).setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 1 - 1.0/(i+1)));
+        if (new Date().getTime() - lastTime1.getTime() > 1) {
+            if (route.getAllCoordinates().get(k).equals(new Point(point.getRealX(), point.getRealY()))) {
+                newVector();
+                k = (k == (route.getAllCoordinates().size() - 1)) ? 0 : k + 1;
             }
 
-            lastTime = new Date();
+            figure.setPosition(point.getPxX(), point.getPxY());
+            label.setTranslateX(point.getPxX() - 12);
+            label.setTranslateY(point.getPxY() + 7);
+
+            point.move(dx, dy);
+            figure.setPosition(point.getPxX(), point.getPxY());
+
+            label.setText(point.getRealYGrad() + " " + point.getRealXGrad() + "\n" +
+                    "Azimuth: " + Tower.getInstance().point.azimuthNorm(this.point) + "°\n" +
+                    "Length: " + Tower.getInstance().point.lengthNorm(this.point) + "м");
+
+            Date date = new Date();
+            if (date.getTime() - lastTime.getTime() > 500) {
+                Circle circle = new Circle();
+                circle.setFill(color);
+                circle.setCenterX(point.getPxX());
+                circle.setCenterY(point.getPxY());
+                circles.add(circle);
+                root.getChildren().add(circle);
+                root.getChildren().remove(circles.get(0));
+                circles.remove(0);
+
+                for (int i = 0; i < circles.size(); i++) {
+                    circles.get(i).setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 1 - 1.0 / (i + 1)));
+                }
+
+                lastTime = new Date();
+            }
         }
     }
 }
