@@ -14,6 +14,7 @@ public abstract class BaseAirObject implements AirObject {
 
     protected double dx;
     protected double dy;
+    protected double dz;
     protected double speed;
     protected Date lastTime;
 
