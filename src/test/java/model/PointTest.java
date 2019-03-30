@@ -66,7 +66,7 @@ class PointTest {
             1, 1, 1, 2,
             1, 1, 1, 3,
         };
-        for (int i = 0; i < points.length / 4; i += 4) {
+        for (int i = 0; i < points.length; i += 4) {
             assertEquals(new Point(points[i], points[i+1]), new Point(points[i+2], points[i+3]));
         }
     }
@@ -82,28 +82,51 @@ class PointTest {
     void GetCorner() {
         Point tower = new Point(0.0, 0.0);
 
-        Point point01 = new Point(0.0, 10.0);
-        assertEquals(0.0, tower.corner(point01), CORNER_DELTA);
+        double[] points = new double[] {
+                90, 0, 10,
+                0, 10, 0,
+                270, 0, -10,
+                180, -10, 0,
 
-        Point point02 = new Point(10.0, 0.0);
-        assertEquals(90.0, tower.corner(point02), CORNER_DELTA);
+                45, 10, 10,
+                315, 10, -10,
+                225, -10, -10,
+                135, -10, 10,
 
-        Point point03 = new Point(0.0, -10.0);
-        assertEquals(180.0, tower.corner(point03), CORNER_DELTA);
+                30, 5 * Math.sqrt(3), 5,
+                150, -5 * Math.sqrt(3), 5,
+                210, -5 * Math.sqrt(3), -5,
+                330, 5 * Math.sqrt(3), -5,
+        };
 
-        Point point04 = new Point(-10.0, 0.0);
-        assertEquals(270.0, tower.corner(point04), CORNER_DELTA);
+        for (int i = 0; i < points.length; i += 3) {
+            assertEquals(points[i], tower.corner(new Point(points[i+1], points[i+2])), CORNER_DELTA);
+        }
+    }
 
-        Point point1 = new Point(10.0, 10.0);
-        assertEquals(45.0, tower.corner(point1), CORNER_DELTA);
+    @Test
+    void GetAzimuth() {
+        Point tower = new Point(0.0, 0.0);
 
-        Point point2 = new Point(10.0, -10.0);
-        assertEquals(135.0, tower.corner(point2), CORNER_DELTA);
+        double[] points = new double[] {
+                0, 0, 10,
+                90, 10, 0,
+                180, 0, -10,
+                270, -10, 0,
 
-        Point point3 = new Point(-10.0, -10.0);
-        assertEquals(225.0, tower.corner(point3), CORNER_DELTA);
+                45, 10, 10,
+                135, 10, -10,
+                225, -10, -10,
+                315, -10, 10,
 
-        Point point4 = new Point(-10.0, 10.0);
-        assertEquals(315.0, tower.corner(point4), CORNER_DELTA);
+                60, 5 * Math.sqrt(3), 5,
+                300, -5 * Math.sqrt(3), 5,
+                240, -5 * Math.sqrt(3), -5,
+                120, 5 * Math.sqrt(3), -5,
+        };
+
+        for (int i = 0; i < points.length; i += 3) {
+            assertEquals(points[i], tower.azimuth(new Point(points[i+1], points[i+2])), CORNER_DELTA);
+        }
     }
 }

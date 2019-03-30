@@ -52,23 +52,32 @@ public class Point {
         return Math.sqrt(dx*dx + dy*dy);
     }
 
-    public double corner(Point point) {
+    double corner(Point point) {
         double length = length(point);
         double dx = point.x - x;
         double dy = point.y - y;
         double sin = dy / length;
         double cos = dx / length;
 
-        double ret = Math.asin(sin);
-        ret = ret * 180 / Math.PI;
-        System.out.println(ret);
-        if (sin < 0 && cos > 0) {
-            ret += 360;
+        double asin = Math.asin(sin) * 180 / Math.PI;
+        double acos = Math.acos(cos) * 180 / Math.PI;
+
+        if (sin >= 0 && cos >= 0) {
+            return asin;
+        } else if (sin > 0 && cos < 0) {
+            return acos;
+        } if (sin < 0 && cos >= 0) {
+            return 360 + asin;
+        } else {
+            return 360 - acos;
         }
-        if (sin < 0 && cos < 0) {
-            ret += 360;
+    }
+
+    double azimuth(Point point) {
+        double ret = 360 - corner(point) + 90;
+        if (ret >= 360) {
+            ret -= 360;
         }
-        ret = ret - 90;
         return ret;
     }
 }
