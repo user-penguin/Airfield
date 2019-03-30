@@ -14,7 +14,7 @@ public class RouteHandler {
                     (getClass().getResource(filePath).getPath() + "/" + filename + ".txt");
             Writer writer = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
             for (Point point: route.getAllCoordinates()) {
-                writer.write(point.getPxX() + " " + point.getPxY() + "\n");
+                writer.write(point.getPxX() + " " + point.getPxY() + " " + point.getRealZ() + "\n");
             }
             writer.close();
         } catch (IOException e) {
@@ -32,9 +32,15 @@ public class RouteHandler {
             String read;
             while((read = br.readLine()) != null) {
                 String[] xyFromFile = read.split(" ");
+                Point point;
                 int xCoordinate = Integer.parseInt(xyFromFile[0]);
                 int yCoordinate = Integer.parseInt(xyFromFile[1]);
-                Point point = new Point(xCoordinate, yCoordinate);
+                if (xyFromFile.length == 3) {
+                    double zCoordinate = Double.parseDouble(xyFromFile[2]);
+                    point = new Point(xCoordinate, yCoordinate, zCoordinate);
+                } else {
+                    point = new Point(xCoordinate, yCoordinate);
+                }
                 route.addCoordinate(point);
             }
         } catch (IOException e) {
