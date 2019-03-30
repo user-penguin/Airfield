@@ -49,12 +49,12 @@ public class Main extends Application {
         animationTimer.start();
 
         add(Factory.createTower());
-        Route route1 = RouteHandler.readRoute("car1");
-        Route route2 = RouteHandler.readRoute("car2");
-        Route route3 = RouteHandler.readRoute("car3");
+        Route route1 = RouteHandler.readRoute("AngleTest");
+        Route route2 = RouteHandler.readRoute("AzimutTest");
+//        Route route3 = RouteHandler.readRoute("car3");
         add(Factory.createCar(route1, 15));
         add(Factory.createCar(route2, 20));
-        add(Factory.createCar(route3, 30));
+//        add(Factory.createCar(route3, 30));
     }
 
     public static void main(String[] args) {

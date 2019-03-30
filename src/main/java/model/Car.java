@@ -52,5 +52,7 @@ public class Car extends BaseAirObject {
 
         point.move(dx, dy);
         figure.setPosition(point.getPxX(), point.getPxY());
+
+
     }
 }

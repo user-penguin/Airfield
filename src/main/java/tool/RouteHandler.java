@@ -14,7 +14,7 @@ public class RouteHandler {
                     (getClass().getResource(filePath).getPath() + "/" + filename + ".txt");
             Writer writer = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
             for (Point point: route.getAllCoordinates()) {
-                writer.write(point.getRealX() + " " + point.getRealY() + "\n");
+                writer.write(point.getPxX() + " " + point.getPxY() + "\n");
             }
             writer.close();
         } catch (IOException e) {
