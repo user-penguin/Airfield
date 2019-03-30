@@ -3,6 +3,7 @@ package dima;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -24,7 +25,7 @@ public class CreateRouteController {
     private MediaPlayer mediaPlayer;
 
     @FXML
-    private TextField inputFileName;
+    private TextField inputFileName, height;
 
     @FXML
     private void initialize () {
@@ -36,12 +37,27 @@ public class CreateRouteController {
                 System.out.println(e.getX());
                 int yCoordinate = (int) e.getY();
                 System.out.println(e.getY());
-                route.addCoordinate(new Point(xCoordinate, yCoordinate));
+                route.addCoordinate(new Point(xCoordinate, yCoordinate, Double.parseDouble(height.getText())));
+            }
+        });
+
+        dromePain.setOnScroll((ScrollEvent event) -> {
+            // Adjust the zoom factor as per your requirement
+            int zoomFactor = 50;
+            int oldHeight = Integer.parseInt(height.getText());
+            double deltaY = event.getDeltaY();
+            if (deltaY > 0) {
+                int newHeight = oldHeight + zoomFactor;
+                height.setText(String.valueOf(newHeight));
+            } else {
+                int newHeight = oldHeight - zoomFactor;
+                height.setText(String.valueOf(newHeight));
             }
         });
         URL helicopterPath = getClass().getResource("/sound/helicopter.mp3");
         Media helicopter = new Media(helicopterPath.toString());
         mediaPlayer = new MediaPlayer(helicopter);
+        height.setText("0");
     }
 
     @FXML
@@ -72,4 +88,5 @@ public class CreateRouteController {
     public void stopHelicopter() {
         mediaPlayer.stop();
     }
+
 }
