@@ -1,7 +1,5 @@
 package model;
 
-import static java.lang.Math.abs;
-
 public class Point {
 
     private double REAL_DELTA = 5.0;
@@ -20,7 +18,7 @@ public class Point {
 
     public Point(int x, int y) {
         this.x = (double) x / PX_WIDTH * REAL_WIDTH;
-        this.y = (double) y / PX_HEIGHT * REAL_HEIGHT;
+        this.y = REAL_HEIGHT - (double) y / PX_HEIGHT * REAL_HEIGHT;
     }
 
     public double getRealX() {
@@ -36,15 +34,41 @@ public class Point {
     }
 
     public int getPxY() {
-        return (int) (y / REAL_HEIGHT * PX_HEIGHT);
+        return PX_HEIGHT - (int) (y / REAL_HEIGHT * PX_HEIGHT);
     }
 
     @Override
     public boolean equals(Object obj) {
         Point point = (Point) obj;
         boolean eq = true;
-        eq = eq && abs(point.x - x) < REAL_DELTA;
-        eq = eq && abs(point.y - y) < REAL_DELTA;
+        eq = eq && Math.abs(point.x - x) < REAL_DELTA;
+        eq = eq && Math.abs(point.y - y) < REAL_DELTA;
         return eq;
+    }
+
+    public double length(Point point) {
+        double dx = x - point.x;
+        double dy = y - point.y;
+        return Math.sqrt(dx*dx + dy*dy);
+    }
+
+    public double corner(Point point) {
+        double length = length(point);
+        double dx = point.x - x;
+        double dy = point.y - y;
+        double sin = dy / length;
+        double cos = dx / length;
+
+        double ret = Math.asin(sin);
+        ret = ret * 180 / Math.PI;
+        System.out.println(ret);
+        if (sin < 0 && cos > 0) {
+            ret += 360;
+        }
+        if (sin < 0 && cos < 0) {
+            ret += 360;
+        }
+        ret = ret - 90;
+        return ret;
     }
 }
