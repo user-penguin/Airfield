@@ -29,7 +29,7 @@ public class Main extends Application {
         public void handle(long now) {
             for (AirObject draw: airObjects) {
                 if (work) {
-                    draw.draw(now);
+                    draw.draw(now, root);
                 }
             }
         }

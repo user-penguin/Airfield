@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 public class Circle extends javafx.scene.shape.Circle implements Figure {
 
     public Circle() {
-        super(4);
+        super(3);
     }
 
     public void setPosition(int pxX, int pxY) {

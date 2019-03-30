@@ -2,6 +2,7 @@ package model;
 
 import figure.Figure;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.Date;
 
@@ -32,5 +33,5 @@ public abstract class BaseAirObject implements AirObject {
     }
 
     @Override
-    public abstract void draw(long time);
+    public abstract void draw(long time, AnchorPane root);
 }
