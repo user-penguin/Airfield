@@ -49,6 +49,9 @@ class PointTest {
     void GetRealXFromPxPointTest() {
         Point point = new Point(1366, 0);
         assertEquals(10_000.0, point.getRealX(), REAL_DELTA);
+
+        Point point1 = new Point(1366, 0, 0.0);
+        assertEquals(10_000.0, point1.getRealX(), REAL_DELTA);
     }
 
     @Test

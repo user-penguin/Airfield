@@ -10,15 +10,26 @@ public class Point {
 
     private double x;
     private double y;
+    private double z;
 
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
+    public Point(int x, int y, double z) {
+        this.x = (double) x / PX_WIDTH * REAL_WIDTH;
+        this.y = REAL_HEIGHT - (double) y / PX_HEIGHT * REAL_HEIGHT;
+        this.z = z;
+    }
+
     public Point(int x, int y) {
         this.x = (double) x / PX_WIDTH * REAL_WIDTH;
         this.y = REAL_HEIGHT - (double) y / PX_HEIGHT * REAL_HEIGHT;
+    }
+
+    public double getRealZ() {
+        return z;
     }
 
     public double getRealX() {

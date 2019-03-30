@@ -2,6 +2,7 @@ package model;
 
 import figure.Circle;
 import figure.Triangle;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import route.Route;
 
@@ -14,10 +15,11 @@ public class Car extends BaseAirObject {
     private List<Circle> circles = new LinkedList<>();
     private Route route;
     private int k = 0;
+    private Color color;
 
     public Car(Route route, double speed) {
         super(new Triangle(), new Point(route.getAllCoordinates().get(0).getRealX(), route.getAllCoordinates().get(0).getRealY()));
-        Color color = Color.color(80.0/255,200.0/255,150.0/255);
+        color = Color.color(150.0/255,120.0/255,255.0/255);
         figure.setFillColor(color);
         label.setTextFill(color);
 
@@ -27,6 +29,7 @@ public class Car extends BaseAirObject {
         }
 
         this.route = route;
+        lastTime = new Date();
 
         newVector();
     }
@@ -46,7 +49,7 @@ public class Car extends BaseAirObject {
     }
 
     @Override
-    public void draw(long time) {
+    public void draw(long time, AnchorPane root) {
         if (route.getAllCoordinates().get(k).equals(new Point(point.getRealX(), point.getRealY()))) {
             newVector();
             k = (k == (route.getAllCoordinates().size() - 1))? 0 : k+1;
@@ -63,30 +66,22 @@ public class Car extends BaseAirObject {
                 "Azimuth: " + Tower.getInstance().point.azimuthNorm(this.point) + "°\n" +
                 "Length: " + Tower.getInstance().point.lengthNorm(this.point) + "м");
 
-//        Date date = new Date();
-//        if (date.getTime() - lastTime.getTime() > 500) {
-//            Circle circle = new Circle(r);
-//            circle.setFill(javafx.scene.paint.Color.color(150.0/255,121.0/255,1));
-//            circle.setCenterX(x);
-//            circle.setCenterY(y);
-//            circles.add(circle);
-//            root.getChildren().add(circle);
-//            root.getChildren().remove(circles.get(0));
-//            circles.remove(0);
-//
-//            label.setText(text + "\nX: " + (int)x + "\nY: " + (int)y);
-//            label.setTranslateX(x + 10);
-//            label.setTranslateY(y + 10);
-//
-//            for (int i = 0; i < circles.size(); i++) {
-//                circles.get(i).setFill(javafx.scene.paint.Color.color(150.0/255,121.0/255,1,  1 - 1.0/(i+1)));
-//            }
-//
-//            root.getChildren().remove(triangle);
-//            triangle = new Triangle(x, y);
-//            root.getChildren().add(triangle);
-//
-//            lastTime = new Date();
-//        }
+        Date date = new Date();
+        if (date.getTime() - lastTime.getTime() > 500) {
+            Circle circle = new Circle();
+            circle.setFill(color);
+            circle.setCenterX(point.getPxX());
+            circle.setCenterY(point.getPxY());
+            circles.add(circle);
+            root.getChildren().add(circle);
+            root.getChildren().remove(circles.get(0));
+            circles.remove(0);
+
+            for (int i = 0; i < circles.size(); i++) {
+                circles.get(i).setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 1 - 1.0/(i+1)));
+            }
+
+            lastTime = new Date();
+        }
     }
 }

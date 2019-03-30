@@ -29,7 +29,7 @@ public class Main extends Application {
         public void handle(long now) {
             for (AirObject draw: airObjects) {
                 if (work) {
-                    draw.draw(now);
+                    draw.draw(now, root);
                 }
             }
         }
@@ -49,10 +49,12 @@ public class Main extends Application {
         animationTimer.start();
 
         add(Factory.createTower());
-        Route route1 = RouteHandler.readRoute("AngleTest");
-        Route route2 = RouteHandler.readRoute("AzimutTest");
-        add(Factory.createCar(route1, 5));
-        add(Factory.createCar(route2, 5));
+        Route route1 = RouteHandler.readRoute("car1");
+        Route route2 = RouteHandler.readRoute("car2");
+        Route route3 = RouteHandler.readRoute("car3");
+        add(Factory.createCar(route1, 0.5));
+        add(Factory.createCar(route2, 0.5));
+        add(Factory.createCar(route3, 0.5));
     }
 
     public static void main(String[] args) {
