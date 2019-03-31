@@ -64,4 +64,19 @@ public class RouteHandler {
         }
         return route;
     }
+
+    public static int readSpeed (String fiename) {
+        // скорости лежат в папке speed
+        String pathToSpeed = "/speed/" + fiename + ".txt";
+        int speed = 0;
+        try {
+            FileInputStream fstream = new FileInputStream(RouteHandler.class.getResource(pathToSpeed).getPath());
+            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+            String read = br.readLine();
+            speed = Integer.parseInt(read);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return speed;
+    }
 }

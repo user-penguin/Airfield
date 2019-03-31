@@ -1,12 +1,11 @@
-package tool;
+package route;
 
 import model.Point;
 import org.junit.jupiter.api.Test;
-import route.Route;
-import route.RouteHandler;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RouteHandlerTest {
@@ -20,5 +19,12 @@ public class RouteHandlerTest {
         for (int i = 0; i < 2; i++) {
             assertEquals(actualCoordinates[i], expectedCoordinates.get(i));
         }
+    }
+
+    @Test
+    public void readingSpeedTest () {
+        int expected = RouteHandler.readSpeed("testSpeed");
+        int actual = 12;
+        assertEquals(expected, actual);
     }
 }

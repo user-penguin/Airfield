@@ -61,7 +61,7 @@ public class Plane extends BaseAirObject {
 
     @Override
     public void draw(long time, AnchorPane root) {
-        if (new Date().getTime() - lastTime1.getTime() > 1) {
+        if (new Date().getTime() - lastTime1.getTime() > 10) {
             if (route.getAllCoordinates().get(k).equals(new Point(point.getRealX(), point.getRealY()))) {
                 newVector();
                 k = (k == (route.getAllCoordinates().size() - 1)) ? 0 : k + 1;
