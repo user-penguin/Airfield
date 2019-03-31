@@ -42,7 +42,7 @@ public class Plane extends BaseAirObject {
         lastTime = new Date();
         lastTime1 = new Date();
 
-        speedTime = RouteHandler.readSpeed("testSpeed");
+        speedTime = new RouteHandler().readSpeed("testSpeed");
 
         newVector();
     }

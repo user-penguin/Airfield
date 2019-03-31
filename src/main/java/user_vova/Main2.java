@@ -81,7 +81,7 @@ public class Main2 extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // инициализация разговора
-        URL audioPath = getClass().getResource("/sound/final_sc1.wav");
+        URL audioPath = getClass().getResource("/sound/final_sc2.wav");
         Media audio = new Media(audioPath.toString());
         startAudioPlayer = new MediaPlayer(audio);
         // инициализация тревоги
@@ -126,11 +126,11 @@ public class Main2 extends Application {
         add(Factory.createCar(route2, 0.5));
         add(Factory.createCar(route3, 0.5));
 
-        Route routePlane = RouteHandler.readRouteWithSpeed("plane1");
-        plane1 = Factory.createPlane(routePlane, "KM251");
+        Route routePlane = RouteHandler.readRouteWithSpeed("plane3");
+        plane1 = Factory.createPlane(routePlane);
         add(plane1);
-        Route routePlane2 = RouteHandler.readRouteWithSpeed("plane2");
-        plane2 = Factory.createPlane(routePlane2, "SP901");
+        Route routePlane2 = RouteHandler.readRouteWithSpeed("plane4");
+        plane2 = Factory.createPlane(routePlane2);
         add(plane2);
     }
 
