@@ -127,10 +127,10 @@ public class Main2 extends Application {
         add(Factory.createCar(route3, 0.5));
 
         Route routePlane = RouteHandler.readRouteWithSpeed("plane3");
-        plane1 = Factory.createPlane(routePlane);
+        plane1 = Factory.createPlane(routePlane, "KM251");
         add(plane1);
         Route routePlane2 = RouteHandler.readRouteWithSpeed("plane4");
-        plane2 = Factory.createPlane(routePlane2);
+        plane2 = Factory.createPlane(routePlane2, "SP901");
         add(plane2);
     }
 
