@@ -27,8 +27,10 @@ public class Main extends Application {
     private AirObject plane1;
     private AirObject plane2;
     private AirObject car;
-    boolean f1 = false;
-    boolean f2 = false;
+    boolean p1 = false;
+    boolean pd1 = false;
+    boolean c1 = false;
+    boolean cd1 = false;
 
     private AnimationTimer animationTimer = new AnimationTimer() {
         @Override
@@ -37,17 +39,17 @@ public class Main extends Application {
                 if (work) {
                     draw.draw(now, root);
                 }
-                if (!f1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 500) {
+                if (!p1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 500) {
                     plane1.danger();
                     plane2.danger();
                     audioDanger();
-                    f1 = true;
+                    p1 = true;
                     System.out.println("Опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
-                } else if (f1 && !f2 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) > 600) {
+                } else if (p1 && !pd1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) > 600) {
                     plane1.notDanger();
                     plane2.notDanger();
                     audioNotDanger();
-                    f2 = true;
+                    pd1 = true;
                     System.out.println("Не опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
                 }
             }
