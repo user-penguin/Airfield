@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import model.AirObject;
 import model.Factory;
@@ -15,6 +17,7 @@ import model.Plane;
 import route.Route;
 import route.RouteHandler;
 
+import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,6 +25,8 @@ public class Main extends Application {
 
     private AnchorPane root;
     private List<AirObject> airObjects = new LinkedList<>();
+    private MediaPlayer startAudioPlayer;
+    private MediaPlayer dangerPlayer;
 
     private boolean work = true;
     private AirObject plane1;
@@ -62,19 +67,28 @@ public class Main extends Application {
     };
 
     private void startAudio() {
-
+        startAudioPlayer.play();
     }
 
     private void audioNotDanger() {
-
+        dangerPlayer.stop();
     }
 
     private void audioDanger() {
-
+        dangerPlayer.play();
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        // инициализация разговора
+        URL audioPath = getClass().getResource("/sound/scene1audio.wav");
+        Media audio = new Media(audioPath.toString());
+        startAudioPlayer = new MediaPlayer(audio);
+        // инициализация тревоги
+        URL dangerAudioPath = getClass().getResource("/sound/scene1danger.mp3");
+        Media danger = new Media(dangerAudioPath.toString());
+        dangerPlayer = new MediaPlayer(danger);
+
         root = FXMLLoader.load(getClass().getResource("/FXML/vova.fxml"));
         primaryStage.setTitle("Аirfield");
         primaryStage.setScene(new Scene(root, 1366, 592));
