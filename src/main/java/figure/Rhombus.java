@@ -16,7 +16,6 @@ public class Rhombus extends Polygon implements Figure {
         );
     }
 
-    @Override
     public void setPosition(int pxX, int pxY) {
         getPoints().setAll(
                 +0 + (double)pxX, +r + (double)pxY,
@@ -26,12 +25,10 @@ public class Rhombus extends Polygon implements Figure {
         );
     }
 
-    @Override
     public void setFillColor(Color color) {
         setFill(color);
     }
 
-    @Override
     public void setSize(int size) {
         r = size;
     }

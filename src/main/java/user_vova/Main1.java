@@ -11,6 +11,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import model.AirObject;
 import model.Factory;
@@ -90,9 +92,18 @@ public class Main1 extends Application {
         root = FXMLLoader.load(getClass().getResource("/FXML/vova.fxml"));
         primaryStage.setTitle("Аirfield");
         primaryStage.setScene(new Scene(root, 1366, 592));
+        Polygon polygon = new Polygon();
+        polygon.getPoints().setAll(
+                0.0 , 0.0,
+                2300.0, 0.0,
+                2300.0, 1500.0,
+                0.0, 1500.0
+        );
+        polygon.setFill(Color.BLACK);
+        root.getChildren().add(0, polygon);
         Button startPause = new Button("Старт/Пауза");
-        startPause.setTranslateX(1250);
-        startPause.setTranslateY(550);
+        startPause.setTranslateX(10);
+        startPause.setTranslateY(10);
         startPause.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 work = !work;

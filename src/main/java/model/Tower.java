@@ -16,6 +16,9 @@ public class Tower extends BaseAirObject {
         label.setText("КНП");
         Color color = Color.color(200.0/255,20.0/255,20.0/255);
         figure.setFillColor(color);
+        figure.setPosition(466, 495);
+        label.setTranslateX(466 - 12);
+        label.setTranslateY(495 + 7);
         label.setTextFill(color);
     }
 
