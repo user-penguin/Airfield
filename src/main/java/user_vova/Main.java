@@ -26,8 +26,12 @@ public class Main extends Application {
     private boolean work = true;
     private AirObject plane1;
     private AirObject plane2;
-    boolean f1 = false;
-    boolean f2 = false;
+    private AirObject car;
+    boolean p1 = false;
+    boolean pd1 = false;
+    boolean c1 = false;
+    boolean cd1 = false;
+    boolean start = true;
 
     private AnimationTimer animationTimer = new AnimationTimer() {
         @Override
@@ -36,22 +40,30 @@ public class Main extends Application {
                 if (work) {
                     draw.draw(now, root);
                 }
-                if (!f1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 500) {
-                    ((Plane) plane1).danger();
-                    ((Plane) plane2).danger();
+                if (start) {
+                    startAudio();
+                    start = false;
+                }
+                if (!p1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 500) {
+                    plane1.danger();
+                    plane2.danger();
                     audioDanger();
-                    f1 = true;
+                    p1 = true;
                     System.out.println("Опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
-                } else if (f1 && !f2 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) > 600) {
-                    ((Plane) plane1).notDanger();
-                    ((Plane) plane2).notDanger();
+                } else if (p1 && !pd1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) > 600) {
+                    plane1.notDanger();
+                    plane2.notDanger();
                     audioNotDanger();
-                    f2 = true;
+                    pd1 = true;
                     System.out.println("Не опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
                 }
             }
         }
     };
+
+    private void startAudio() {
+
+    }
 
     private void audioNotDanger() {
 
@@ -78,7 +90,8 @@ public class Main extends Application {
         Route route1 = RouteHandler.readRoute("car1");
         Route route2 = RouteHandler.readRoute("car2");
         Route route3 = RouteHandler.readRoute("car3");
-        add(Factory.createCar(route1, 0.5));
+        car = Factory.createCar(route1, 0.5);
+        add(car);
         add(Factory.createCar(route2, 0.5));
         add(Factory.createCar(route3, 0.5));
 
