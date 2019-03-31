@@ -20,6 +20,7 @@ public class Plane extends BaseAirObject {
     private Color color;
 
     private int num = 0;
+    private int num2 = 0;
     boolean testFlag = false;
     private long speedTime;
 
@@ -101,7 +102,8 @@ public class Plane extends BaseAirObject {
             label.setText(point.getRealYGrad() + " " + point.getRealXGrad() + "\n" +
                     "Azimuth: " + Tower.getInstance().point.azimuthNorm(this.point) + "°\n" +
                     "Length: " + Tower.getInstance().point.lengthNorm(this.point) + "м\n" +
-                    "Height: " + point.getRealZNorm());
+                    "Height: " + point.getRealZNorm() + "\n" +
+                    "Speed: " + (speed*30 + num2++%6));
 
             Date date = new Date();
             if (date.getTime() - lastTime.getTime() > 500) {

@@ -28,7 +28,7 @@ public class Main extends Application {
     private MediaPlayer startAudioPlayer;
     private MediaPlayer dangerPlayer;
 
-    private boolean work = true;
+    private boolean work = false;
     private AirObject plane1;
     private AirObject plane2;
     boolean p1 = false;
@@ -41,23 +41,23 @@ public class Main extends Application {
             for (AirObject draw: airObjects) {
                 if (work) {
                     draw.draw(now, root);
-                }
-                if (start) {
-                    startAudio();
-                    start = false;
-                }
-                if (!p1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 500) {
-                    plane1.danger();
-                    plane2.danger();
-                    audioDanger();
-                    p1 = true;
-                    System.out.println("Опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
-                } else if (p1 && !pd1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) > 600) {
-                    plane1.notDanger();
-                    plane2.notDanger();
-                    audioNotDanger();
-                    pd1 = true;
-                    System.out.println("Не опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
+                    if (start) {
+                        startAudio();
+                        start = false;
+                    }
+                    if (!p1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 500) {
+                        plane1.danger();
+                        plane2.danger();
+                        audioDanger();
+                        p1 = true;
+                        System.out.println("Опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
+                    } else if (p1 && !pd1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) > 600) {
+                        plane1.notDanger();
+                        plane2.notDanger();
+                        audioNotDanger();
+                        pd1 = true;
+                        System.out.println("Не опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
+                    }
                 }
             }
         }
@@ -101,9 +101,9 @@ public class Main extends Application {
         Route route1 = RouteHandler.readRoute("car1");
         Route route2 = RouteHandler.readRoute("car2");
         Route route3 = RouteHandler.readRoute("car3");
-//        add(Factory.createCar(route1, 0.5));
-//        add(Factory.createCar(route2, 0.5));
-//        add(Factory.createCar(route3, 0.5));
+        add(Factory.createCar(route1, 0.5));
+        add(Factory.createCar(route2, 0.5));
+        add(Factory.createCar(route3, 0.5));
 
         Route routePlane = RouteHandler.readRouteWithSpeed("plane1");
         plane1 = Factory.createPlane(routePlane);
