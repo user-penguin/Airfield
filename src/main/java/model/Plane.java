@@ -19,7 +19,7 @@ public class Plane extends BaseAirObject {
     private Color color;
 
     private int num = 0;
-    boolean testFlag = true;
+    boolean testFlag = false;
 
     public Plane(Route route) {
         super(new Rhombus(), new Point(route.getAllCoordinates().get(0).getPxX(), route.getAllCoordinates().get(0).getPxY(), route.getAllCoordinates().get(0).getRealZ(), route.getAllCoordinates().get(0).getSpeed()));
@@ -70,7 +70,11 @@ public class Plane extends BaseAirObject {
                     label.setTextFill(color);
                     label.setTranslateX(point.getPxX());
                     label.setTranslateY(point.getPxY());
+                    Circle circle = new Circle();
+                    circle.setFillColor(color);
+                    circle.setPosition(point.getPxX(), point.getPxY());
                     root.getChildren().add(label);
+                    root.getChildren().add(circle);
                 }
                 k = (k == (route.getAllCoordinates().size() - 1)) ? 0 : k + 1;
             }

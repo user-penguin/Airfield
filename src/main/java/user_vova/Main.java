@@ -31,6 +31,7 @@ public class Main extends Application {
     boolean pd1 = false;
     boolean c1 = false;
     boolean cd1 = false;
+    boolean start = true;
 
     private AnimationTimer animationTimer = new AnimationTimer() {
         @Override
@@ -38,6 +39,10 @@ public class Main extends Application {
             for (AirObject draw: airObjects) {
                 if (work) {
                     draw.draw(now, root);
+                }
+                if (start) {
+                    startAudio();
+                    start = false;
                 }
                 if (!p1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 500) {
                     plane1.danger();
@@ -55,6 +60,10 @@ public class Main extends Application {
             }
         }
     };
+
+    private void startAudio() {
+
+    }
 
     private void audioNotDanger() {
 
