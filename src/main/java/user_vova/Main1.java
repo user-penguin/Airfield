@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Main extends Application {
+public class Main1 extends Application {
 
     private AnchorPane root;
     private List<AirObject> airObjects = new LinkedList<>();
