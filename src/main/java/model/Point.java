@@ -5,8 +5,8 @@ public class Point {
     private double REAL_DELTA = 50.0;
     private int PX_WIDTH = 1366; // в пикселях
     private int PX_HEIGHT = 592; // в пикселях
-    private double REAL_WIDTH = 10_000.0; // в метрах
-    private double REAL_HEIGHT = 5_000.0; // в метрах
+    private double REAL_WIDTH = 10000.0; // в метрах
+    private double REAL_HEIGHT = 5000.0; // в метрах
 
     private double x;
     private double y;

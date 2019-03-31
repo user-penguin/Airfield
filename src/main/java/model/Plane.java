@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Plane extends BaseAirObject {
 
-    private List<Circle> circles = new LinkedList<>();
+    private List<Circle> circles = new LinkedList<Circle>();
     private Route route;
     private int k = 0;
     private Color color;

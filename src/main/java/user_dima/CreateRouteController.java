@@ -1,5 +1,6 @@
 package user_dima;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -31,27 +32,31 @@ public class CreateRouteController {
     private void initialize () {
         route = new Route();
         isRecording = false;
-        dromePain.addEventHandler(MouseEvent.MOUSE_CLICKED, e-> {
-            if (isRecording) {
-                int xCoordinate = (int) e.getX();
-                System.out.println(e.getX());
-                int yCoordinate = (int) e.getY();
-                System.out.println(e.getY());
-                route.addCoordinate(new Point(xCoordinate, yCoordinate, Double.parseDouble(height.getText()), 0));
+        dromePain.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent e) {
+                if (isRecording) {
+                    int xCoordinate = (int) e.getX();
+                    System.out.println(e.getX());
+                    int yCoordinate = (int) e.getY();
+                    System.out.println(e.getY());
+                    route.addCoordinate(new Point(xCoordinate, yCoordinate, Double.parseDouble(height.getText()), 0));
+                }
             }
         });
 
-        dromePain.setOnScroll((ScrollEvent event) -> {
-            // Adjust the zoom factor as per your requirement
-            int zoomFactor = 50;
-            int oldHeight = Integer.parseInt(height.getText());
-            double deltaY = event.getDeltaY();
-            if (deltaY > 0) {
-                int newHeight = oldHeight + zoomFactor;
-                height.setText(String.valueOf(newHeight));
-            } else {
-                int newHeight = oldHeight - zoomFactor;
-                height.setText(String.valueOf(newHeight));
+        dromePain.setOnScroll(new EventHandler<ScrollEvent>() {
+            public void handle(ScrollEvent event) {
+                // Adjust the zoom factor as per your requirement
+                int zoomFactor = 50;
+                int oldHeight = Integer.parseInt(height.getText());
+                double deltaY = event.getDeltaY();
+                if (deltaY > 0) {
+                    int newHeight = oldHeight + zoomFactor;
+                    height.setText(String.valueOf(newHeight));
+                } else {
+                    int newHeight = oldHeight - zoomFactor;
+                    height.setText(String.valueOf(newHeight));
+                }
             }
         });
         URL helicopterPath = getClass().getResource("/sound/helicopter.mp3");

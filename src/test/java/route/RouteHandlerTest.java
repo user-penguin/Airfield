@@ -23,7 +23,7 @@ public class RouteHandlerTest {
     @Test
     public void readingSpeedTest () {
         int expected = RouteHandler.readSpeed("testSpeed");
-        int actual = 12;
+        int actual = 30;
         assertEquals(expected, actual);
     }
 }

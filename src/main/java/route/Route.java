@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Route {
 
-    private ArrayList<Point> route = new ArrayList<>();
+    private ArrayList<Point> route = new ArrayList<Point>();
 
     public void addCoordinate (Point coordinate) {
         this.route.add(coordinate);

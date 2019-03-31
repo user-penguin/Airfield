@@ -2,6 +2,7 @@ package user_vova;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -24,7 +25,7 @@ import java.util.List;
 public class Main2 extends Application {
 
     private AnchorPane root;
-    private List<AirObject> airObjects = new LinkedList<>();
+    private List<AirObject> airObjects = new LinkedList<AirObject>();
     private MediaPlayer startAudioPlayer;
     private MediaPlayer dangerPlayer;
 
@@ -92,7 +93,11 @@ public class Main2 extends Application {
         Button startPause = new Button("Старт/Пауза");
         startPause.setTranslateX(1250);
         startPause.setTranslateY(550);
-        startPause.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> work = !work);
+        startPause.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent event) {
+                work = !work;
+            }
+        });
         root.getChildren().add(startPause);
         primaryStage.show();
         animationTimer.start();
