@@ -31,11 +31,8 @@ public class Main extends Application {
     private boolean work = true;
     private AirObject plane1;
     private AirObject plane2;
-    private AirObject car;
     boolean p1 = false;
     boolean pd1 = false;
-    boolean c1 = false;
-    boolean cd1 = false;
     boolean start = true;
 
     private AnimationTimer animationTimer = new AnimationTimer() {
@@ -104,10 +101,9 @@ public class Main extends Application {
         Route route1 = RouteHandler.readRoute("car1");
         Route route2 = RouteHandler.readRoute("car2");
         Route route3 = RouteHandler.readRoute("car3");
-        car = Factory.createCar(route1, 0.5);
-        add(car);
-        add(Factory.createCar(route2, 0.5));
-        add(Factory.createCar(route3, 0.5));
+//        add(Factory.createCar(route1, 0.5));
+//        add(Factory.createCar(route2, 0.5));
+//        add(Factory.createCar(route3, 0.5));
 
         Route routePlane = RouteHandler.readRouteWithSpeed("plane1");
         plane1 = Factory.createPlane(routePlane);

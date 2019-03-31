@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import route.Route;
+import route.RouteHandler;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -20,6 +21,7 @@ public class Plane extends BaseAirObject {
 
     private int num = 0;
     boolean testFlag = false;
+    private long speedTime;
 
     public Plane(Route route) {
         super(new Rhombus(), new Point(route.getAllCoordinates().get(0).getPxX(), route.getAllCoordinates().get(0).getPxY(), route.getAllCoordinates().get(0).getRealZ(), route.getAllCoordinates().get(0).getSpeed()));
@@ -35,6 +37,8 @@ public class Plane extends BaseAirObject {
         this.route = route;
         lastTime = new Date();
         lastTime1 = new Date();
+
+        speedTime = RouteHandler.readSpeed("testSpeed");
 
         newVector();
     }
@@ -62,7 +66,7 @@ public class Plane extends BaseAirObject {
 
     @Override
     public void draw(long time, AnchorPane root) {
-        if (new Date().getTime() - lastTime1.getTime() > 10) {
+        if (new Date().getTime() - lastTime1.getTime() > speedTime) {
             if (route.getAllCoordinates().get(k).equals(new Point(point.getRealX(), point.getRealY()))) {
                 newVector();
                 if (testFlag) {
