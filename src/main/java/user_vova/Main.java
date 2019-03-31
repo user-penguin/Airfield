@@ -1,4 +1,4 @@
-package vova;
+package user_vova;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -11,8 +11,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.AirObject;
 import model.Factory;
+import model.Plane;
 import route.Route;
-import tool.RouteHandler;
+import route.RouteHandler;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -23,6 +24,10 @@ public class Main extends Application {
     private List<AirObject> airObjects = new LinkedList<>();
 
     private boolean work = true;
+    private AirObject plane1;
+    private AirObject plane2;
+    boolean f1 = false;
+    boolean f2 = false;
 
     private AnimationTimer animationTimer = new AnimationTimer() {
         @Override
@@ -31,9 +36,30 @@ public class Main extends Application {
                 if (work) {
                     draw.draw(now, root);
                 }
+                if (!f1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 500) {
+                    ((Plane) plane1).danger();
+                    ((Plane) plane2).danger();
+                    audioDanger();
+                    f1 = true;
+                    System.out.println("Опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
+                } else if (f1 && !f2 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) > 600) {
+                    ((Plane) plane1).notDanger();
+                    ((Plane) plane2).notDanger();
+                    audioNotDanger();
+                    f2 = true;
+                    System.out.println("Не опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
+                }
             }
         }
     };
+
+    private void audioNotDanger() {
+
+    }
+
+    private void audioDanger() {
+
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -57,9 +83,11 @@ public class Main extends Application {
         add(Factory.createCar(route3, 0.5));
 
         Route routePlane = RouteHandler.readRouteWithSpeed("plane1");
-        add(Factory.createPlane(routePlane));
+        plane1 = Factory.createPlane(routePlane);
+        add(plane1);
         Route routePlane2 = RouteHandler.readRouteWithSpeed("plane2");
-        add(Factory.createPlane(routePlane2));
+        plane2 = Factory.createPlane(routePlane2);
+        add(plane2);
     }
 
     public static void main(String[] args) {

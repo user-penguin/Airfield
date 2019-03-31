@@ -36,4 +36,8 @@ public abstract class BaseAirObject implements AirObject {
 
     @Override
     public abstract void draw(long time, AnchorPane root);
+
+    public Point getPoint() {
+        return point;
+    }
 }

@@ -1,4 +1,4 @@
-package dima;
+package user_dima;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

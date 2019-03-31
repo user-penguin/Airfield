@@ -1,4 +1,4 @@
-package dima;
+package audio;
 
 public interface AudioFile {
     void play();

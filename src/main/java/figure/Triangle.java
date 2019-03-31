@@ -26,4 +26,9 @@ public class Triangle extends Polygon implements Figure {
     public void setFillColor(Color color) {
         setFill(color);
     }
+
+    @Override
+    public void setSize(int size) {
+
+    }
 }

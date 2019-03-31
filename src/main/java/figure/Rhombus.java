@@ -30,4 +30,9 @@ public class Rhombus extends Polygon implements Figure {
     public void setFillColor(Color color) {
         setFill(color);
     }
+
+    @Override
+    public void setSize(int size) {
+        r = size;
+    }
 }

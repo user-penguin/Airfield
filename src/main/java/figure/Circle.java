@@ -4,6 +4,8 @@ import javafx.scene.paint.Color;
 
 public class Circle extends javafx.scene.shape.Circle implements Figure {
 
+    double r = 3;
+
     public Circle() {
         super(3);
     }
@@ -17,6 +19,11 @@ public class Circle extends javafx.scene.shape.Circle implements Figure {
     @Override
     public void setFillColor(Color color) {
         setFill(color);
+    }
+
+    @Override
+    public void setSize(int size) {
+        r = size;
     }
 
 }

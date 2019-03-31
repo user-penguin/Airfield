@@ -1,7 +1,6 @@
 package model;
 
 import figure.Circle;
-import figure.Figure;
 import figure.Rhombus;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -17,6 +16,9 @@ public class Plane extends BaseAirObject {
     private Route route;
     private int k = 0;
     private Color color;
+    private boolean danger;
+
+    private int num = 0;
 
     public Plane(Route route) {
         super(new Rhombus(), new Point(route.getAllCoordinates().get(0).getPxX(), route.getAllCoordinates().get(0).getPxY(), route.getAllCoordinates().get(0).getRealZ(), route.getAllCoordinates().get(0).getSpeed()));
@@ -64,6 +66,14 @@ public class Plane extends BaseAirObject {
                 newVector();
                 k = (k == (route.getAllCoordinates().size() - 1)) ? 0 : k + 1;
             }
+            if (danger) {
+                figure.setFillColor(Color.color(250.0/255,50.0/255,50.0/255));
+                figure.setSize(5 + num % 5);
+                num++;
+            } else {
+                figure.setFillColor(color);
+                figure.setSize(5);
+            }
 
             figure.setPosition(point.getPxX(), point.getPxY());
             label.setTranslateX(point.getPxX() - 12);
@@ -96,5 +106,13 @@ public class Plane extends BaseAirObject {
             }
             lastTime1 = new Date();
         }
+    }
+
+    public void danger() {
+        danger = true;
+    }
+
+    public void notDanger() {
+        danger = false;
     }
 }

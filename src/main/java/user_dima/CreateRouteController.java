@@ -1,4 +1,4 @@
-package dima;
+package user_dima;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -9,7 +9,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import model.Point;
 import route.Route;
-import tool.RouteHandler;
+import route.RouteHandler;
 
 import java.net.URL;
 

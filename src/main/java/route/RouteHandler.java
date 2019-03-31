@@ -1,7 +1,6 @@
-package tool;
+package route;
 
 import model.Point;
-import route.Route;
 
 import java.io.*;
 
