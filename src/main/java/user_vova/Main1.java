@@ -78,7 +78,7 @@ public class Main1 extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // инициализация разговора
-        URL audioPath = getClass().getResource("/sound/scene1audio.wav");
+        URL audioPath = getClass().getResource("/sound/final_sc1.wav");
         Media audio = new Media(audioPath.toString());
         startAudioPlayer = new MediaPlayer(audio);
         // инициализация тревоги
