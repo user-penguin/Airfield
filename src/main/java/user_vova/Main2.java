@@ -48,13 +48,13 @@ public class Main2 extends Application {
                         startAudio();
                         start = false;
                     }
-                    if (!p1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 4000) {
+                    if (!p1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 3000) {
                         plane1.danger();
                         plane2.danger();
                         audioDanger();
                         p1 = true;
                         System.out.println("Опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
-                    } else if (p1 && !pd1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) > 4100) {
+                    } else if (p1 && !pd1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) > 3100) {
                         plane1.notDanger();
                         plane2.notDanger();
                         audioNotDanger();
