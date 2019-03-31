@@ -23,10 +23,10 @@ public class RouteHandler {
 
     public static Route readRoute (String filename) {
         // маршруты лежат в папке way
-        String pathToSource = "/way/" + filename + ".txt";
+        String pathToSource = "src/main/resources/way/" + filename + ".txt";
         Route route = new Route();
         try {
-            FileInputStream fstream = new FileInputStream(RouteHandler.class.getResource(pathToSource).getPath());
+            FileInputStream fstream = new FileInputStream(new File(pathToSource));
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             String read;
             while((read = br.readLine()) != null) {
@@ -44,10 +44,10 @@ public class RouteHandler {
 
     public static Route readRouteWithSpeed (String filename) {
         // маршруты лежат в папке way
-        String pathToSource = "/way/" + filename + ".txt";
+        String pathToSource = "src/main/resources/way/" + filename + ".txt";
         Route route = new Route();
         try {
-            FileInputStream fstream = new FileInputStream(RouteHandler.class.getResource(pathToSource).getPath());
+            FileInputStream fstream = new FileInputStream(new File(pathToSource));
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             String read;
             while((read = br.readLine()) != null) {
@@ -67,10 +67,10 @@ public class RouteHandler {
 
     public static int readSpeed (String fiename) {
         // скорости лежат в папке speed
-        String pathToSpeed = "/speed/" + fiename + ".txt";
+        String pathToSpeed = "src/main/resources/speed/" + fiename + ".txt";
         int speed = 0;
         try {
-            FileInputStream fstream = new FileInputStream(RouteHandler.class.getResource(pathToSpeed).getPath());
+            FileInputStream fstream = new FileInputStream(new File(pathToSpeed));
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             String read = br.readLine();
             speed = Integer.parseInt(read);
