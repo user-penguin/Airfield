@@ -19,6 +19,8 @@ public abstract class BaseAirObject implements AirObject {
     protected Date lastTime;
     protected Date lastTime1;
 
+    protected boolean danger;
+
     public BaseAirObject(Figure figure, Point point) {
         this.figure = figure;
         this.point = point;
@@ -39,5 +41,15 @@ public abstract class BaseAirObject implements AirObject {
 
     public Point getPoint() {
         return point;
+    }
+
+    @Override
+    public void danger() {
+        danger = true;
+    }
+
+    @Override
+    public void notDanger() {
+        danger = false;
     }
 }

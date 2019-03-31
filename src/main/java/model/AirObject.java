@@ -8,4 +8,8 @@ public interface AirObject {
     Label getLabel();
     Figure getFigure();
     void draw(long time, AnchorPane root);
+
+    void notDanger();
+
+    void danger();
 }

@@ -16,7 +16,6 @@ public class Plane extends BaseAirObject {
     private Route route;
     private int k = 0;
     private Color color;
-    private boolean danger;
 
     private int num = 0;
 
@@ -106,13 +105,5 @@ public class Plane extends BaseAirObject {
             }
             lastTime1 = new Date();
         }
-    }
-
-    public void danger() {
-        danger = true;
-    }
-
-    public void notDanger() {
-        danger = false;
     }
 }
