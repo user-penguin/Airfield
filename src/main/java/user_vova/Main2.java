@@ -48,13 +48,13 @@ public class Main2 extends Application {
                         startAudio();
                         start = false;
                     }
-                    if (!p1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 500) {
+                    if (!p1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) < 4000) {
                         plane1.danger();
                         plane2.danger();
                         audioDanger();
                         p1 = true;
                         System.out.println("Опасно " + ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()));
-                    } else if (p1 && !pd1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) > 600) {
+                    } else if (p1 && !pd1 && ((Plane) plane1).getPoint().length(((Plane) plane2).getPoint()) > 4100) {
                         plane1.notDanger();
                         plane2.notDanger();
                         audioNotDanger();
@@ -90,6 +90,8 @@ public class Main2 extends Application {
         dangerPlayer = new MediaPlayer(danger);
 
         root = FXMLLoader.load(getClass().getResource("/FXML/vova.fxml"));
+        primaryStage.setTitle("Аirfield");
+        primaryStage.setScene(new Scene(root, 1366, 592));
         Polygon polygon = new Polygon();
         polygon.getPoints().setAll(
                 0.0 , 0.0,
@@ -99,14 +101,17 @@ public class Main2 extends Application {
         );
         polygon.setFill(Color.BLACK);
         root.getChildren().add(0, polygon);
-        primaryStage.setTitle("Аirfield");
-        primaryStage.setScene(new Scene(root, 1366, 592));
         Button startPause = new Button("Старт/Пауза");
         startPause.setTranslateX(10);
         startPause.setTranslateY(10);
         startPause.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 work = !work;
+                if (!work) {
+                    startAudioPlayer.pause();
+                } else {
+                    startAudioPlayer.play();
+                }
             }
         });
         root.getChildren().add(startPause);
@@ -122,10 +127,10 @@ public class Main2 extends Application {
         add(Factory.createCar(route3, 0.5));
 
         Route routePlane = RouteHandler.readRouteWithSpeed("plane1");
-        plane1 = Factory.createPlane(routePlane);
+        plane1 = Factory.createPlane(routePlane, "KM251");
         add(plane1);
         Route routePlane2 = RouteHandler.readRouteWithSpeed("plane2");
-        plane2 = Factory.createPlane(routePlane2);
+        plane2 = Factory.createPlane(routePlane2, "SP901");
         add(plane2);
     }
 

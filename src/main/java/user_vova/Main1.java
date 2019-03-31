@@ -86,7 +86,7 @@ public class Main1 extends Application {
         startAudioPlayer = new MediaPlayer(audio);
         // инициализация тревоги
         URL dangerAudioPath = getClass().getResource("/sound/scene1danger.mp3");
-        Media danger = new Media(dangerAudioPath.toString());
+        final Media danger = new Media(dangerAudioPath.toString());
         dangerPlayer = new MediaPlayer(danger);
 
         root = FXMLLoader.load(getClass().getResource("/FXML/vova.fxml"));
@@ -107,6 +107,11 @@ public class Main1 extends Application {
         startPause.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 work = !work;
+                if (!work) {
+                    startAudioPlayer.pause();
+                } else {
+                    startAudioPlayer.play();
+                }
             }
         });
         root.getChildren().add(startPause);
@@ -122,10 +127,10 @@ public class Main1 extends Application {
         add(Factory.createCar(route3, 0.5));
 
         Route routePlane = RouteHandler.readRouteWithSpeed("plane1");
-        plane1 = Factory.createPlane(routePlane);
+        plane1 = Factory.createPlane(routePlane, "KM251");
         add(plane1);
         Route routePlane2 = RouteHandler.readRouteWithSpeed("plane2");
-        plane2 = Factory.createPlane(routePlane2);
+        plane2 = Factory.createPlane(routePlane2, "SP901");
         add(plane2);
     }
 

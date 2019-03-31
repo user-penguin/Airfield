@@ -24,8 +24,11 @@ public class Plane extends BaseAirObject {
     boolean testFlag = false;
     private long speedTime;
 
-    public Plane(Route route) {
+    private String name;
+
+    public Plane(Route route, String name) {
         super(new Rhombus(), new Point(route.getAllCoordinates().get(0).getPxX(), route.getAllCoordinates().get(0).getPxY(), route.getAllCoordinates().get(0).getRealZ(), route.getAllCoordinates().get(0).getSpeed()));
+        this.name = name;
         color = Color.color(50.0/255,200.0/255,50.0/255);
         figure.setFillColor(color);
         label.setTextFill(color);
@@ -99,7 +102,8 @@ public class Plane extends BaseAirObject {
             point.move(dx, dy, dz);
             figure.setPosition(point.getPxX(), point.getPxY());
 
-            label.setText(point.getRealYGrad() + " " + point.getRealXGrad() + "\n" +
+            label.setText(name + "\n" +
+                    point.getRealYGrad() + " " + point.getRealXGrad() + "\n" +
                     "Azimuth: " + Tower.getInstance().point.azimuthNorm(this.point) + "°\n" +
                     "Length: " + Tower.getInstance().point.lengthNorm(this.point) + "м\n" +
                     "Height: " + point.getRealZNorm() + "\n" +
